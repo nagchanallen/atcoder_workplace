@@ -8,6 +8,7 @@ ll MOD = 1e9+7;
 ll LLINF = 3e18;
 int INTINF = 2e9;
 
+int N, M, K;
+
 int main() {
-    
 }

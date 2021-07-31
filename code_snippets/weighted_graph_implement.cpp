@@ -15,6 +15,7 @@ int main() {
     Graph G(N);
     for (int i = 0; i < M; i++) {
         int A, B, C;
+        cin >> A >> B >> C;
         G[A].push_back(Edge(B, C));
     }
 }
