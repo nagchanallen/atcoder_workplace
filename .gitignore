@@ -1,0 +1,8 @@
+# macos
+a.out
+
+# windows
+*.exe
+
+runC++.md
+.vscode/
