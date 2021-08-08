@@ -6,7 +6,7 @@ using Graph = vector<vector<int>>;
 Graph G;
 vector<bool> seen;
 
-void dfs(const Graph &G, int v) {
+void dfs(Graph &G, int v) {
     seen[v] = true;
     for (auto next_v: G[v]) {
         if (seen[next_v]) continue;

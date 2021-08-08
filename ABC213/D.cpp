@@ -12,17 +12,13 @@ int INTINF = 2e9;
 int N;
 vector<bool> seen;
 
-void dfs(const Graph &G, int v, int prev) {
+void dfs(Graph &G, int v, int prev) {
     seen[v] = true;
     cout << v << ' ';
-    int temp[G[v].size()];
-    for (int i = 0; i < G[v].size(); ++i) {
-        temp[i] = G[v][i];
-    }
-    sort(temp, temp + G[v].size());
-    for (int i = 0; i < G[v].size(); ++i) {
-        if (seen[temp[i]]) continue;
-        dfs(G, temp[i], v);
+    sort(G[v].begin(), G[v].end());
+    for (auto next: G[v]) {
+        if (seen[next]) continue;
+        dfs(G, next, v);
     }
     if (prev != -1) cout << prev << ' ';
 }
