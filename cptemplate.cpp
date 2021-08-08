@@ -8,6 +8,13 @@ ll MOD = 1e9+7;
 ll LLINF = 3e18;
 int INTINF = 2e9;
 
+// global variables
+
 int main() {
+    // input
+    
+    // solve
+
+    // output
     
 }
