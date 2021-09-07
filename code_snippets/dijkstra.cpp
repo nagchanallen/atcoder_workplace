@@ -3,45 +3,48 @@
 using ll = long long;
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); ++i)
+ll LLINF = 3e18;
 int N, M, S;
 
 struct Edge {
     int to;
     int weight;
-    Edge(int t, int w): to(t), weight(w) {};
+    Edge(int t, int w) : to(t), weight(w) {};
 };
-using Graph = vector<vector<Edge>>;
 
-void dijkstra(const Graph &G, int s) {
-    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
-    vector<bool> visited(N, false);
-    vector<ll> dis(N, 4e18);
-    rep(i, N) dis[i] = 4e18;
-    dis[s] = 0;
-    pq.push(make_pair(dis[s], s));
+// global variables
+int V, E, r;
+
+int main() {
+    // input
+    cin >> V >> E >> r;
+    vector<vector<Edge>> G(V);
+    for (int i = 0; i < E; ++i) {
+        int s, t, d; cin >> s >> t >> d;
+        G[s].push_back(Edge(t, d));
+    }
+    // solve
+    ll dist[V];
+    for (int i = 0; i < V; ++i) dist[i] = LLINF;
+    dist[r] = 0;
+    priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>> > pq;
+    pq.push(make_pair(dist[r], r));
     while (!pq.empty()) {
-        int v = pq.top().second;
-        pq.pop();
-        if (visited[v]) continue;
-        visited[v] = true;
-        for (Edge next: G[v]) {
-            if (dis[next.to] > dis[v] + next.weight) {
-                dis[next.to] = dis[v] + next.weight;
-                pq.push(make_pair(dis[next.to], next.to));
+        pair<ll, int> v = pq.top(); pq.pop();
+        if (v.first > dist[v.second]) continue; 
+        for (auto next: G[v.second]) {
+            if (v.first + next.weight < dist[next.to]) {
+                dist[next.to] = v.first + next.weight;
+                pq.push(make_pair(dist[next.to], next.to));
             }
         }
     }
-    rep(i, N) cout << dis[i] << endl;
-}
-
-int main() {
-    cin >> N >> M >> S;
-    Graph G(N);
-    rep(i, M) {
-        int from, to, weight;
-        cin >> from >> to >> weight;
-        G[from].push_back(Edge(to, weight));
+    // output
+    for (int i = 0; i < V; ++i) {
+        if (dist[i] == LLINF) {
+            cout << "INF" << endl;
+        } else {
+            cout << dist[i] << endl;
+        }
     }
-    dijkstra(G, 0);
-    return 0;
 }
