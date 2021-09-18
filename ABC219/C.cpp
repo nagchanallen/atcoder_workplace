@@ -11,13 +11,14 @@ int INTINF = 2e9;
 
 // global variables
 string X;
-ll N, M[30];
+ll N, M[30], A[30];
 
 int main() {
     // input
     cin >> X;
     for (ll i = 0; i < 26; ++i) {
         M[int(X[int(i)]) % 97] = i;
+        A[i] = int(X[int(i)]) % 97;
     }
     cin >> N;
     // solve
@@ -30,6 +31,9 @@ int main() {
     }
     sort(S.begin(), S.end());
     for (int i = 0; i < N; ++i) {
-        cout << S[i] << endl;
+        string t = "";
+        string s; s = S[i];
+        rep0(j, s.length()) t = t + char(97 + A[int(s[j]) % 97]); 
+        cout << t << endl;
     }
 }
