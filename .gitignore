@@ -5,4 +5,6 @@ a.out
 *.exe
 
 runC++.md
-.vscode/
+.vscode
+atcoder
+bits
