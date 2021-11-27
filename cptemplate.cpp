@@ -11,9 +11,7 @@ int INTINF = 2e9;
 
 // global variables
 
+
 int main() {
-    // input
-    
-    // solve
 
 }
