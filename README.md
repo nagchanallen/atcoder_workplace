@@ -17,3 +17,9 @@ You need to include [atcoder library](https://github.com/atcoder/ac-library) for
 3. Run `$ ./genABCNewFiles.sh`
 4. When you are running the script, you need to input the folder name.
 5. The script would help you generate a folder with your input name including 8 files named `A.cpp` to `H.cpp` which copied from `cptemplate.cpp` in root directory.
+
+# Compile cpp files in folder
+
+```
+$ g++ -I . <FILE_NAME>
+```
